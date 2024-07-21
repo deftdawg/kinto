@@ -9,12 +9,20 @@ from gi.repository import Gtk,Gdk,GdkPixbuf
 from gi.repository import Vte,GLib
 from shutil import which
 from subprocess import Popen,PIPE,CalledProcessError
-from distutils.util import strtobool
+
+def strtobool(val):
+    val = val.lower()
+    if val in ['y', 'yes', 't', 'true', 'on', '1']:
+        return True
+    elif val in ['n', 'no', 'f', 'false', 'off', '0']:
+        return False
+    else:
+        raise ValueError(f"invalid truth value {val}")
 
 import signal
 
 def kill_child():
-    if child_pid is None:
+    if child_pid is None:       
         pass
     else:
         os.kill(child_pid, signal.SIGTERM)
