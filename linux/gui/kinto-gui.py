@@ -125,7 +125,7 @@ class MyWindow(Gtk.Window):
         terminal.spawn_sync(
             Vte.PtyFlags.DEFAULT,
             os.environ['HOME']+'/.config/kinto',
-            ["/bin/bash"],
+            ["/usr/bin/env bash"],
             [],
             GLib.SpawnFlags.DO_NOT_REAP_CHILD,
             None,

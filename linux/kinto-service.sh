@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # chkconfig: 35 90 12
 # description: Kinto service

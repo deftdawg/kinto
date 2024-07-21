@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/master/install/linux.sh)"
+# /usr/bin/env bash -c "$(curl -fsSL https://raw.githubusercontent.com/rbreaves/kinto/master/install/linux.sh)"
 
 wget https://github.com/rbreaves/kinto/archive/refs/heads/master.zip -O ~/Downloads/kinto.zip || curl https://github.com/rbreaves/kinto/archive/refs/heads/master.zip -J -L -o ~/Downloads/kinto.zip
 unzip ~/Downloads/kinto.zip -d ~/Downloads/

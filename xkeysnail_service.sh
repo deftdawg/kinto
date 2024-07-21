@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # set about:config?filter=ui.key.menuAccessKeyFocuses
 # to false for wordwise to work in Firefox

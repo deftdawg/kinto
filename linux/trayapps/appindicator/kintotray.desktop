@@ -2,7 +2,7 @@
 Name=Kinto Tray
 GenericName=Kintotray
 Comment=Make Linux Type Like it's a Mac
-Exec=/bin/bash -c "{homedir}/.config/kinto/kintotray.py"
+Exec=/usr/bin/env bash -c "{homedir}/.config/kinto/kintotray.py"
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
