@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import shutil
 import gi,os,time,fcntl,argparse,re
 import warnings
 warnings.filterwarnings("ignore")
@@ -119,14 +120,25 @@ class MyWindow(Gtk.Window):
         self.args = parser.parse_args()
 
         self.initSetup()
+        # Ensure PATH includes the directories where bash is typically located
+        env = os.environ.copy()
+        env['PATH'] = env.get('PATH', '') + ':/usr/bin:/bin'
+
+        # Find the path to bash
+        bash_path = shutil.which("bash")
+        if bash_path is None:
+            raise RuntimeError("bash not found in PATH")
+
+        # Convert the environment variables dictionary to a list of strings in the format "KEY=VALUE"
+        env_list = [f'{key}={value}' for key, value in env.items()]
 
         global terminal
         terminal = Vte.Terminal()
         terminal.spawn_sync(
             Vte.PtyFlags.DEFAULT,
             os.environ['HOME']+'/.config/kinto',
-            ["/usr/bin/env bash"],
-            [],
+            [bash_path],
+            env_list,
             GLib.SpawnFlags.DO_NOT_REAP_CHILD,
             None,
             None,
